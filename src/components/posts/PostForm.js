@@ -37,7 +37,7 @@ export const PostForm = () => {
     }
 
     createPost(postData).then((post) => {
-      navigate(`posts/${post.id}`)
+      navigate(`/posts/${post.id}`)
     })
   }
 
@@ -127,6 +127,22 @@ export const PostForm = () => {
                 })
 
               }
+            </div>
+            <div className="field">
+                    <label className="label"> Publication Date:</label>
+                <div className="control">
+                    <input
+                        required autoFocus
+                        type="date"
+                        step="any"
+                        name="publication_date"
+                        className="input is-rounded"
+                        placeholder="publication_date"
+                        value={post.publication_date}
+                        onChange={
+                          handleChange
+                          } />
+                </div>
             </div>
             <div className="field">
               <div className="control">

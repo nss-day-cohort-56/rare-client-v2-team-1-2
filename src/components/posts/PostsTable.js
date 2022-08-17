@@ -16,7 +16,7 @@ export const PostsTable = ({ posts, deleteClickEvent }) => {
       {
         posts.map(post => {
           return <tr key={post.id}>
-            <td><Link to={`/posts/${post.id}`}>{post.title}</Link></td>
+            <td><Link to={`/posts/${post?.id}`}>{post.title}</Link></td>
             <td>{post.publication_date}</td>
             <td>{post.category?.label}</td>
             <td>
