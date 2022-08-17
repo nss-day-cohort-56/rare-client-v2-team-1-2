@@ -11,6 +11,7 @@ import { PostList } from "../components/posts/postList"
 import { EditPost } from "../components/posts/EditPost"
 import { CommentForm } from "../components/comments/CommentForm"
 import { CommentsList } from "../components/comments/CommentList"
+import { CommentEdit } from "../components/comments/CommentEdit"
 
 
 
@@ -31,6 +32,8 @@ export const AuthorViews = ({ token, setToken, setUserId, userId, setStaffBool }
       <Route path="/posts/:postId/comments" element={<CommentsList userId={userId} />} />
       <Route path="/posts/:postId" element={<PostDetails userId={userId} />} />
       <Route path="/posts/:postId/add-comment" element={<CommentForm />} />
+      <Route path="/posts/:commentId/edit-comment" element={<CommentEdit />} />
+
     </Route>
   </Routes>
 }
