@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useState } from "react"
 import { Link, useParams } from "react-router-dom"
-import { deleteComment, getCommentsByPostId } from '../../managers/CommentManager'
+import { deleteComment, getCommentsByPostId } from '../../managers/CommentManager' 
 import { FaTrashAlt, FaUserCircle, FaEdit } from 'react-icons/fa';
 
 
