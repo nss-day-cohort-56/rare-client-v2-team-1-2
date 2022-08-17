@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useState } from "react"
-import { useParams } from "react-router-dom"
-import { deleteComment, getCommentsByPostId } from '../../managers/CommentManager' 
+import { Link, useParams } from "react-router-dom"
+import { deleteComment, getCommentsByPostId } from '../../managers/CommentManager'
 import { FaTrashAlt, FaUserCircle, FaEdit } from 'react-icons/fa';
 
 
@@ -13,10 +13,16 @@ export const CommentsList = ({ userId }) => {
       setComments(commentsData)
     })
   }, [postId])
-  
+
   useEffect(() => {
     loadComments()
   }, [loadComments])
+
+  const confirmDelete = (id) => {
+    if (window.confirm("Do you want to delete this comment?")) {
+      handleDelete(id)
+    }
+  }
 
   const handleDelete = (id) => {
     deleteComment(id).then(() => {
@@ -43,7 +49,11 @@ export const CommentsList = ({ userId }) => {
                   <p>
                     <strong>{comment.author?.user.first_name} {comment.author?.user.last_name}</strong>
                     <br />
+                    Subject: {comment.subject}
+                    <br />
                     {comment.content}
+                    <br />
+                    Posted on {comment.created_on}
                   </p>
                 </div>
 
@@ -52,10 +62,10 @@ export const CommentsList = ({ userId }) => {
                 parseInt(userId) === comment.author_id ?
                   <div className="media-right">
                     <span className="icon">
-                      <FaEdit />
+                      <Link to={`/posts/${comment.id}/edit-comment`}><FaEdit /></Link>
                     </span>
                     <span className="icon">
-                      <FaTrashAlt onClick={() => handleDelete(comment.id)} />
+                      <FaTrashAlt onClick={() => confirmDelete(comment.id)} />
                     </span>
                   </div>
                   :

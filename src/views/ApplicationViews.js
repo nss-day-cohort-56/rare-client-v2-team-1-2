@@ -1,6 +1,7 @@
 import { AdminViews } from "./AdminViews"
 import { AuthorViews } from "./AuthorViews"
 
+
 export const ApplicationViews = ({ token, setToken, setUserId, userId, setStaffBool }) => {
 
   const localUserStaffBool = localStorage.getItem("is_staff")
@@ -10,5 +11,6 @@ export const ApplicationViews = ({ token, setToken, setUserId, userId, setStaffB
   } else {
     return <AuthorViews token={token} setToken={setToken} setUserId={setUserId} userId={userId} setStaffBool={setStaffBool} />
   }
+
 
 }
