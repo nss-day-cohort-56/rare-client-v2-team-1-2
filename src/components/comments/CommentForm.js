@@ -9,7 +9,8 @@ export const CommentForm = () => {
 
   const [comment, setComment] = useState({
     post_id: postId,
-    content: ""
+    content: "",
+    subject: ""
   })
 
   const handleSave = (event) => {
@@ -20,7 +21,7 @@ export const CommentForm = () => {
 
   const handleUpdate = (evt) => {
     const copy = { ...comment }
-    copy.content = evt.target.value
+    copy[evt.target.name] = evt.target.value
     setComment(copy)
   }
 
@@ -31,8 +32,19 @@ export const CommentForm = () => {
           <div className="field">
             <label className="label">Add a new comment</label>
             <div className="control">
+              Subject
               <input className="input" required autoFocus
                 type="text"
+                name="subject"
+                value={comment.subject}
+                onChange={handleUpdate } />
+            </div>
+            <br />
+            <div className="control">
+              Content
+              <input className="input"
+                type="text"
+                name="content"
                 value={comment.content}
                 onChange={handleUpdate } />
             </div>
