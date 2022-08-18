@@ -20,7 +20,7 @@ export const Rare = () => {
 
   const setIsStaff = (isStaffBoolean) => {
     localStorage.setItem('is_staff', isStaffBoolean)
-    setUserIdState(isStaffBoolean)
+    setStaffBool(isStaffBoolean)
   }
 
   return <>
