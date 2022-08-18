@@ -1,14 +1,13 @@
 import { useState, useEffect } from "react"
-import { Link, useNavigate } from "react-router-dom"
-import { getAllUsers } from "../../managers/UserManager"
+import { Link } from "react-router-dom"
+import { getAllActiveUsers } from "../../managers/UserManager"
 
-export const UserList = () => {
-
+export const AuthorUserList = () => {
     const [users, setUsers] = useState([])
 
     useEffect(
         () => {
-            getAllUsers().then(setUsers)
+            getAllActiveUsers().then(setUsers)
         },
         []
     )
@@ -20,22 +19,14 @@ export const UserList = () => {
                     <tr>
                         <th>Users</th>
                         <th>Full Name</th>
-                        <th>User Type</th>
                     </tr>
                 </thead>
                 <tbody>
                     {
                         users.map(user => (
                             <tr key={user.id}>
-                                <td>{user.user.username}</td>
+                                <td><Link to={`/users/${user.id}`}>{user.user.username}</Link></td>
                                 <td>{user.user.first_name} {user.user.last_name}</td>
-                                <td>
-                                    {
-                                        (user.user.is_staff)
-                                            ? <>Admin</>
-                                            : <>Author</>
-                                    }
-                                </td>
                             </tr>
                         ))
                     }
