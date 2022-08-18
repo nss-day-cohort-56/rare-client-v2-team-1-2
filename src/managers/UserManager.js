@@ -16,6 +16,15 @@ export const getAllUsers = () => {
       .then(res => res.json())
   }
 
+  export const getAllInactiveUsers = () => {
+    return fetch("http://localhost:8000/users/inactive", {
+      headers: {
+        'Authorization': `Token ${localStorage.getItem('auth_token')}`
+      }
+    })
+      .then(res => res.json())
+  }
+
 export const getDetailedUser = (userId) => {
   return fetch(`http://localhost:8000/users/${userId}`, {
       headers: {
@@ -23,4 +32,16 @@ export const getDetailedUser = (userId) => {
       }
     })
       .then(res => res.json())
+}
+
+
+
+export const updateUserActiveStatus = (userId) => {
+  return fetch(`http://localhost:8000/users/${userId}/active_status`, {
+      method: 'PUT',
+      headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Token ${localStorage.getItem('auth_token')}`
+      }
+  })
 }
