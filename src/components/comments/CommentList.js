@@ -59,7 +59,7 @@ export const CommentsList = ({ userId }) => {
 
               </div>
               {
-                parseInt(userId) === comment.author_id ?
+                parseInt(userId) === comment?.author?.user?.id ?
                   <div className="media-right">
                     <span className="icon">
                       <Link to={`/posts/${comment.id}/edit-comment`}><FaEdit /></Link>
