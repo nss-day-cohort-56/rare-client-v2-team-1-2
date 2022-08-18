@@ -98,3 +98,13 @@ export const getApprovePostList = () => {
   })
     .then(res => res.json())
 }
+export const approvePost = (id, post) => {
+  return fetch(`http://localhost:8000/posts/${id}/approve_post`, {
+    method: "PUT",
+    headers: {
+      "Content-Type": "application/json",
+      'Authorization': `Token ${localStorage.getItem('auth_token')}`
+    },
+    body: JSON.stringify(post)
+  })
+}

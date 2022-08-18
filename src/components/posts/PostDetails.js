@@ -1,14 +1,17 @@
 import { useEffect, useState } from "react"
 import { Link, useParams } from "react-router-dom"
-import { getPostById } from "../../managers/PostManager"
+import { approvePost, getPostById } from "../../managers/PostManager"
 import { FaUserCircle } from 'react-icons/fa'
 
 export const PostDetails = ({ userId }) => {
   const [post, setPost] = useState({})
   const { postId } = useParams()
-
-  useEffect(() => {
+  const loadPosts = () => {
     getPostById(postId).then(postData => setPost(postData))
+
+  }
+  useEffect(() => {
+    loadPosts()
   }, [postId])
 
   return <section className="section">
@@ -47,6 +50,9 @@ export const PostDetails = ({ userId }) => {
         <Link to={`/posts/${postId}/add-comment`} className="card-footer-item">Add Comments</Link>
         {
           parseInt(userId) === post.user?.id ? <Link to={`/posts/${postId}/edit`} className="card-footer-item">Edit</Link> : <></>
+        }
+        {
+          localStorage.getItem('is_staff') === "true" && !post.approved ? <button className="button " onClick={() => {approvePost(postId).then(loadPosts)}}>Approve</button> : localStorage.getItem('is_staff') === "true" && post.approved ? <button className="button" onClick={() => {approvePost(postId).then(loadPosts)}}>Unapproved</button> : <></>
         }
       </footer>
     </div>
