@@ -37,6 +37,8 @@ export const AuthorViews = ({ token, setToken, setUserId, userId, setStaffBool }
       <Route path="/posts/:commentId/edit-comment" element={<CommentEdit />} />
       <Route path="/users" element={<AuthorUserList />} />
       <Route path="/users/:userId" element={<AuthorUserDetails />} />
+      <Route path="/posts/:postId/add-comment" element={<CommentForm userId={userId}/>} />
+      <Route path="/posts/:commentId/edit-comment" element={<CommentEdit userId={userId}/>} />
     </Route>
   </Routes>
 }
