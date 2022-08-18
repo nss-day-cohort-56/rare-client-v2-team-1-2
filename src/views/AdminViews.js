@@ -12,7 +12,11 @@ import { EditPost } from "../components/posts/EditPost"
 import { CommentForm } from "../components/comments/CommentForm"
 import { CommentsList } from "../components/comments/CommentList"
 import { UserList } from "../components/users/UserList"
+
+import { ApprovePostList } from "../components/posts/ApprovePostList"
+
 import { CommentEdit } from "../components/comments/CommentEdit"
+
 
 
 
@@ -25,6 +29,8 @@ export const AdminViews = ({ token, setToken, setUserId, userId, setStaffBool })
       <Route path="/tags" element={<TagList />} />
 
       <Route path="/posts" element={<PostList />} />
+      <Route path="/approve_post_list" element={<ApprovePostList />} />
+
       <Route path="/my-posts" element={<MyPost />} />
       <Route path="/posts/create" element={<PostForm />} />
       <Route path="/posts/:postId/edit" element={<EditPost />} />

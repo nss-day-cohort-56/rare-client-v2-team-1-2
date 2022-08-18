@@ -90,3 +90,11 @@ export const deletePost = (postId) => {
     }
   })
 }
+export const getApprovePostList = () => {
+  return fetch("http://localhost:8000/posts/approve_post_list", {
+    headers: {
+      'Authorization': `Token ${localStorage.getItem('auth_token')}`
+    }
+  })
+    .then(res => res.json())
+}

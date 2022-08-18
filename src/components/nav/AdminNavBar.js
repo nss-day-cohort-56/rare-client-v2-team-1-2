@@ -38,6 +38,8 @@ export const AdminNavBar = ({ token, setToken }) => {
                   <Link to="/posts/create" className="navbar-item">New Post</Link>    
                   <Link to="/categories" className="navbar-item">Category Management</Link>
                   <Link to="/users" className="navbar-item">User Profiles</Link>        
+                  <Link to="/approve_post_list" className="navbar-item">Approve Post</Link>        
+
               </>
               :
               ""
