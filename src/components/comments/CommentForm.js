@@ -3,14 +3,15 @@ import { useState } from "react"
 import { useParams } from "react-router-dom"
 import { useNavigate } from "react-router-dom"
 
-export const CommentForm = () => {
+export const CommentForm = ({ userId }) => {
   const { postId } = useParams()
   const navigate = useNavigate()
 
   const [comment, setComment] = useState({
     post_id: postId,
     content: "",
-    subject: ""
+    subject: "",
+    author_id: parseInt(userId)
   })
 
   const handleSave = (event) => {
@@ -37,7 +38,7 @@ export const CommentForm = () => {
                 type="text"
                 name="subject"
                 value={comment.subject}
-                onChange={handleUpdate } />
+                onChange={handleUpdate} />
             </div>
             <br />
             <div className="control">
@@ -46,7 +47,7 @@ export const CommentForm = () => {
                 type="text"
                 name="content"
                 value={comment.content}
-                onChange={handleUpdate } />
+                onChange={handleUpdate} />
             </div>
           </div>
           <div className="field is-grouped">

@@ -38,8 +38,8 @@ export const AdminViews = ({ token, setToken, setUserId, userId, setStaffBool })
       <Route path="/categories" element={<CategoriesList />} />
       <Route path="/posts/:postId/comments" element={<CommentsList userId={userId} />} />
       <Route path="/posts/:postId" element={<PostDetails userId={userId} />} />
-      <Route path="/posts/:postId/add-comment" element={<CommentForm />} />
-      <Route path="/posts/:commentId/edit-comment" element={<CommentEdit />} />
+      <Route path="/posts/:postId/add-comment" element={<CommentForm userId={userId}/>} />
+      <Route path="/posts/:commentId/edit-comment" element={<CommentEdit userId={userId}/>} />
       <Route path="/users" element={<UserList/>} />
     </Route>
   </Routes>

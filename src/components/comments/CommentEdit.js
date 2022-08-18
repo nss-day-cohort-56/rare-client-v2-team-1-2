@@ -2,7 +2,7 @@ import { useEffect, useState } from "react"
 import { useNavigate, useParams } from "react-router-dom"
 import { getSingleComment, saveEditComment } from "../../managers/CommentManager"
 
-export const CommentEdit = () => {
+export const CommentEdit = ({ userId }) => {
     const { commentId } = useParams()
     const { postId } = useParams()
     const navigate = useNavigate()
@@ -35,7 +35,7 @@ export const CommentEdit = () => {
                                 }}
                             />
                         </div>
-                        <br/>
+                        <br />
                         <div className="control">
                             Content
                             <input className="input"
@@ -58,7 +58,7 @@ export const CommentEdit = () => {
                                     const comment = {
                                         id: commentId,
                                         content: editComment.content,
-                                        author_id: parseInt(editComment.author_id),
+                                        author_id: parseInt(userId),
                                         post_id: editComment.post_id,
                                         created_on: editComment.created_on,
                                         subject: editComment.subject
@@ -70,7 +70,7 @@ export const CommentEdit = () => {
                                 className="button is-success">
                                 Save
                             </button>
-                            <button onClick={() => {navigate(`/posts/${editComment.post_id}/comments`)}} className="button is-success">Cancel</button>
+                            <button onClick={() => { navigate(`/posts/${editComment.post_id}/comments`) }} className="button is-success">Cancel</button>
                         </div>
                     </div>
                 </div>

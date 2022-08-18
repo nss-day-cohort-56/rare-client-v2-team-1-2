@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react"
 import { Link, useNavigate } from "react-router-dom"
-import { getAllUsers } from "../../managers/UserManager"
+import { getAllActiveUsers, getAllInactiveUsers, updateUserActiveStatus } from "../../managers/UserManager"
 
 export const UserList = () => {
 
@@ -8,12 +8,48 @@ export const UserList = () => {
 
     useEffect(
         () => {
-            getAllUsers().then(setUsers)
+            showActiveUsers()
         },
         []
     )
 
+    const showActiveUsers = () => {
+        getAllActiveUsers().then(setUsers)
+    }
+
+    const showInactiveUsers = () => {
+        getAllInactiveUsers().then(setUsers)
+    }
+
+    const confirmDeactivate = (userId) => {
+        if (window.confirm("Do you want to deactivate this user?")) {
+            handleDeactivate(userId)
+        }
+    }
+
+    const handleDeactivate = (userId) => {
+        updateUserActiveStatus(userId).then(
+            showActiveUsers()
+        )
+    }
+
+    const confirmActivate = (userId) => {
+        if (window.confirm("Do you want to reactivate this user?")) {
+            handleActivate(userId)
+        }
+    }
+
+    const handleActivate = (userId) => {
+        updateUserActiveStatus(userId).then(
+            showInactiveUsers()
+        )
+    }
+
     return <section className="section">
+        <div>
+            <button className="button is-info" onClick={() => { showActiveUsers() }}>View Active Users</button>
+            <button className="button is-warning" onClick={() => { showInactiveUsers() }}>View Inactive Users</button>
+        </div>
         <div className="column">
             <table className="table is-fullwidth">
                 <thead>
@@ -21,6 +57,7 @@ export const UserList = () => {
                         <th>Users</th>
                         <th>Full Name</th>
                         <th>User Type</th>
+                        <th>Update User Status</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -34,6 +71,13 @@ export const UserList = () => {
                                         (user.user.is_staff)
                                             ? <>Admin</>
                                             : <>Author</>
+                                    }
+                                </td>
+                                <td>
+                                    {
+                                        (user.user.is_active)
+                                            ? <button className="button is-danger" onClick={() => { confirmDeactivate(user.id) }}>Deactivate</button>
+                                            : <button className="button is-warning" onClick={() => { confirmActivate(user.id) }}>Activate</button>
                                     }
                                 </td>
                             </tr>
