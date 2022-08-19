@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react"
 import { getAllPosts } from "../../managers/PostManager"
 import { PostsTable } from "./PostsTable"
+import { PostTagSearch } from "./PostTagSearch"
 import { PostTitleSearch } from "./PostTitleSearch"
 
 
@@ -16,6 +17,8 @@ export const PostList = () => {
   return <section className="section">
 {/* added post title module to post list and passed down setPosts and loadPosts */}
     <PostTitleSearch setPosts={setPosts} loadPosts={loadPosts}/>
+    <PostTagSearch setPosts={setPosts} loadPosts={loadPosts}/>
+    <br/>
     <article className="panel is-info">
       <p className="panel-heading">
         Posts

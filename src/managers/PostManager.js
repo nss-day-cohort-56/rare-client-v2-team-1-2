@@ -16,6 +16,15 @@ export const getSearchTitlePost = (search) => {
     .then(res => res.json())
 }
 
+export const getSearchTagPost = (search) => {
+  return fetch(`http://localhost:8000/posts?tag_search=${search}`, {
+    headers: {
+      'Authorization': `Token ${localStorage.getItem('auth_token')}`
+    }
+  })
+    .then(res => res.json())
+}
+
 export const createPost = (post) => {
   return fetch("http://localhost:8000/posts", {
     method: "POST",
