@@ -17,6 +17,7 @@ import { ApprovePostList } from "../components/posts/ApprovePostList"
 
 import { CommentEdit } from "../components/comments/CommentEdit"
 import { AdminEditUserProfile } from "../components/users/AdminEditUserProfile"
+import { SubscribedPostList } from "../components/posts/SubscribedPost"
 
 
 
@@ -31,6 +32,7 @@ export const AdminViews = ({ token, setToken, setUserId, userId, setStaffBool })
 
       <Route path="/posts" element={<PostList />} />
       <Route path="/approve_post_list" element={<ApprovePostList />} />
+      <Route path="/" element={<SubscribedPostList />} />
 
       <Route path="/my-posts" element={<MyPost />} />
       <Route path="/posts/create" element={<PostForm />} />

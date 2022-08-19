@@ -117,3 +117,11 @@ export const approvePost = (id, post) => {
     body: JSON.stringify(post)
   })
 }
+export const getPostBySubscription = () => {
+  return fetch("http://localhost:8000/posts/get_subscribed_posts", {
+    headers: {
+      'Authorization': `Token ${localStorage.getItem('auth_token')}`
+    }
+  })
+    .then(res => res.json())
+}
