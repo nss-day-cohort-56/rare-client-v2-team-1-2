@@ -29,7 +29,6 @@ export const AuthorViews = ({ token, setToken, setUserId, userId, setStaffBool }
       <Route path="/my-posts" element={<MyPost />} />
       <Route path="/posts/create" element={<PostForm />} />
       <Route path="/posts/:postId/edit" element={<EditPost />} />
-
       <Route path="/categories" element={<CategoriesList />} />
       <Route path="/posts/:postId/comments" element={<CommentsList userId={userId} />} />
       <Route path="/posts/:postId" element={<PostDetails userId={userId} />} />
@@ -37,6 +36,8 @@ export const AuthorViews = ({ token, setToken, setUserId, userId, setStaffBool }
       <Route path="/posts/:commentId/edit-comment" element={<CommentEdit />} />
       <Route path="/users" element={<AuthorUserList />} />
       <Route path="/users/:userId" element={<AuthorUserDetails />} />
+      <Route path="/posts/:postId/add-comment" element={<CommentForm userId={userId}/>} />
+      <Route path="/posts/:commentId/edit-comment" element={<CommentEdit userId={userId}/>} />
       <Route path="/posts/:postId/add-comment" element={<CommentForm userId={userId}/>} />
       <Route path="/posts/:commentId/edit-comment" element={<CommentEdit userId={userId}/>} />
     </Route>
