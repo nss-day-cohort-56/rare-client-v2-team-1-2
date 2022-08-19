@@ -13,17 +13,6 @@ export const AuthorUserDetails = () => {
     getDetailedUser(userId).then(setUserDetails)
   }, [userId])
 
-//   useEffect(
-//     () => {
-//         if (user?.user?.date_joined) {
-//             const myDate = user.user.date_joined
-//             const newDate = myDate.toLocaleDateString('en-US')
-//             setFormattedDate(newDate)
-//         }
-//     },
-//     [user]
-//   )
-
   return <section className="section">
     <div className="card">
       <header className="card-header is-justify-content-center">
@@ -36,16 +25,16 @@ export const AuthorUserDetails = () => {
             {
                 (user.profile_image_url)
                 ? <img src={user?.profile_image_url} alt={user?.user?.username} />
-                : <img src="https://cdn.media.amplience.net/i/partycity/176114?$large$" alt="default image" />
+                : <img src="https://icon-library.com/images/default-user-icon/default-user-icon-13.jpg" alt="default image" />
             }
         </figure>
       </div>
       <div className="card-content">
         <div className="media">
           <div className="media-left">
-            <span className="icon is-large">
+            {/* <span className="icon is-large">
               <FaUserCircle size={'3rem'} />
-            </span>
+            </span> */}
           </div>
           <div className="media-content">
             
