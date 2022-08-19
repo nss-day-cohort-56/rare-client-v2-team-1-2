@@ -34,7 +34,16 @@ export const getDetailedUser = (userId) => {
       .then(res => res.json())
 }
 
-
+export const updateUser = (id, userInfo) => {
+  return fetch(`http://localhost:8000/users/${id}`, {
+    method: "PUT",
+    headers: {
+      "Content-Type": "application/json",
+      'Authorization': `Token ${localStorage.getItem('auth_token')}`
+    },
+    body: JSON.stringify(userInfo)
+  })
+}
 
 export const updateUserActiveStatus = (userId) => {
   return fetch(`http://localhost:8000/users/${userId}/active_status`, {
