@@ -3,7 +3,7 @@ import { Link, useNavigate } from "react-router-dom"
 import { getAllActiveUsers, getAllInactiveUsers, updateUserActiveStatus } from "../../managers/UserManager"
 
 export const UserList = () => {
-
+    const navigate = useNavigate()
     const [users, setUsers] = useState([])
 
     useEffect(
@@ -55,6 +55,7 @@ export const UserList = () => {
                 <thead>
                     <tr>
                         <th>Users</th>
+                        <th>Edit Profile</th>
                         <th>Full Name</th>
                         <th>User Type</th>
                         <th>Update User Status</th>
@@ -65,6 +66,9 @@ export const UserList = () => {
                         users.map(user => (
                             <tr key={user.id}>
                                 <td>{user.user.username}</td>
+                                <td>
+                                    <button className="button is-warning" onClick={() => { navigate(`${user.id}/edit`) }}>Edit Profile</button>
+                                </td>
                                 <td>{user.user.first_name} {user.user.last_name}</td>
                                 <td>
                                     {
