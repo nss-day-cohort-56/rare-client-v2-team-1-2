@@ -14,6 +14,7 @@ import { CommentsList } from "../components/comments/CommentList"
 import { CommentEdit } from "../components/comments/CommentEdit"
 import { AuthorUserList } from "../components/users/AuthorUserList"
 import { AuthorUserDetails } from "../components/users/AuthorUserDetails"
+import { SubscribedPostList } from "../components/posts/SubscribedPost"
 
 
 
@@ -27,6 +28,7 @@ export const AuthorViews = ({ token, setToken, setUserId, userId, setStaffBool }
 
       <Route path="/posts" element={<PostList />} />
       <Route path="/my-posts" element={<MyPost />} />
+      <Route path="/" element={<SubscribedPostList />} />
       <Route path="/posts/create" element={<PostForm />} />
       <Route path="/posts/:postId/edit" element={<EditPost />} />
       <Route path="/categories" element={<CategoriesList />} />
